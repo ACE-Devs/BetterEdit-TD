@@ -1,0 +1,85 @@
+:root{
+    --primary-color: teal;
+    --secondary-color: green;
+    --tertiary-color: aquamarine;
+}
+
+#title{
+    position: absolute;
+    top: calc(50vh - 180px);
+    font-size: 50px;
+}
+button{
+    border-radius: 10px;
+}
+body{
+    background: var(--primary-color);
+    font-family: "Noto Sans";
+    overflow: hidden;
+}
+#home{
+    position: absolute;
+    left: 30vw;
+    top: -1px;
+    width: 70vw;
+    height: 100vh;
+    background: var(--secondary-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 40% 100%);
+}
+
+#levels{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 400px;
+    height: fit-content;
+    font-size: x-large;
+}
+#levels button{
+    width: 100px;
+    height: 30%;
+}
+
+#top{
+    position:absolute;
+    left: 50%;
+}
+
+#top button{
+    width: 100px;
+    height: 40px;
+}
+
+/* the level editor */
+#editor{
+    margin: -1px;
+    width: 80vw;
+    height: 70vh;
+}
+#menu button{
+    background-color: var(--tertiary-color);
+}
+#panel{
+    position: absolute;
+    left: 82vw;
+    top: 0;
+    width: 20vw;
+    height: 70vh;
+    background-color: var(--tertiary-color);
+}
+#panel button{
+    width: calc(20vw / 4);
+    height: calc(70vh / 7);
+    background-color: transparent;
+    border: 0px;
+}
+#panel button img{
+    width: inherit;
+    height: inherit;
+    border-radius: 10px;
+    border: 5px;
+}
+#blocks button{
+    border: 0px;
+    background-color: transparent;
+}

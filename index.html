@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <h1 id="title">BetterEdit TD</h1>
+    <div id="home">
+        <div id="top">
+            <button onclick="window.location.href = 'editor.html?new=1'">New</button>
+        </div>
+
+        <div id="levels"></div>
+    </div>
+</body>
+<script>
+    function downloadLevel(name, text) {
+        const myFile = new File([text], name);
+
+        const link = document.createElement('a');
+        link.style.display = 'none';
+        link.href = URL.createObjectURL(myFile);
+        link.download = myFile.name;
+
+        document.body.appendChild(link);
+        link.click();
+
+        setTimeout(() => {
+            URL.revokeObjectURL(link.href);
+            link.parentNode.removeChild(link);
+        }, 0);
+    }
+    function deleteLevel(key) {
+        window.localStorage.removeItem(key)
+        window.location.reload()
+    }
+    const levels = document.getElementById("levels")
+    for (let index = 0; index < window.localStorage.length; index++) {
+        let key = window.localStorage.key(index);
+        if (key.includes("+")) { n = key.split("+").join(" ") } else { n = key }
+        levels.innerHTML += `
+        <button onclick="window.location.href = 'editor.html?open=${key}'">${n}</button><button onclick="deleteLevel('${key}')">Delete</button><button onclick="downloadLevel('${n}.txt', \`${window.localStorage.getItem(key)}\`)">Export</button>
+        <br>`
+    }
+</script>
+
+</html>
